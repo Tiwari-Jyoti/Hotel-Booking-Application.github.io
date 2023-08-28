@@ -1,0 +1,28 @@
+<app-admin-header></app-admin-header>
+<div class="main-container">
+    <table class="table">
+        <thead>
+            <th scope="col">Place Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Location</th>
+            <th scope="col">description</th>
+            <th scope="col">Rating</th>
+            <th scope='col'>type</th>
+            <th scope='col'>Reserved</th>
+            <th scope='col'>Delete</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ele of places">
+                <th scope="row"><input type="text" placeholder="{{ele.name}}" #pname (keyup.enter)="updatepname(pname.value,ele.id)"> </th>
+                <th scope="row"><input type="number" placeholder="{{ele.price}}" #pprice (keyup.enter)="updatepprice(pprice.value,ele.id)"> </th>
+                <th scope="row"><input type="text" placeholder="{{ele.location}}" #ploc (keyup.enter)="updatelocation(ploc.value,ele.id)"> </th>
+                <th scope="row"><input type="text" placeholder="{{ele.description}}" #pdesc (keyup.enter)="updatepdesc(pdesc.value,ele.id)"> </th>
+                <th scope="row"><input type="text" placeholder="{{ele.rating}}" #prate (keyup.enter)="updateprating(prate.value,ele.id)"> </th>
+                <th scope="row"><input type="text" placeholder="{{ele.type}}" #ptype (keyup.enter)="updatetype(ptype.value,ele.id)"> </th>
+                <th scope="row"><input type="text" placeholder="{{ele.reserved}}" #preserve (keyup.enter)="updatereserved(preserve.value,ele.id)"> </th>
+                 <td><button class="btn btn-danger" (click)="delete(ele)">delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<app-footer></app-footer>

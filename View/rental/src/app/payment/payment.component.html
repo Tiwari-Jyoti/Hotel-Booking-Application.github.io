@@ -1,0 +1,32 @@
+<app-header></app-header>
+<div class="main-container">
+  <div class="payment-container">
+    <h2>Payment Information</h2>
+    <form (ngSubmit)="submitPaymentForm()" #paymentForm="ngForm">
+      <div class="form-group">
+        <label for="cardNumber">Card Number</label>
+        <input type="text" id="cardNumber" name="cardNumber" [(ngModel)]="cardNumber" required pattern="^[0-9]{16}$" appNumericOnly placeholder="1234 5678 9012 3456">
+        <div>
+          <span *ngIf="paymentForm.controls['cardNumber'].invalid && paymentForm.controls['cardNumber'].touched" class="text-danger">Enter a valid Card Number(16 Digits)</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input type="text" id="expiryDate" name="expiryDate" [(ngModel)]="expiryDate" required pattern="^(0[1-9]|1[0-2])\/\d{2}$" placeholder="MM/YY">
+        <div>
+          <span *ngIf="paymentForm.controls['expiryDate'].invalid && paymentForm.controls['expiryDate'].touched" class="text-danger">Enter a valid Date(MM/YY)</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input type="text" id="cvv" name="cvv" [(ngModel)]="cvv" required pattern="^[0-9]{3}$" appNumericOnly placeholder="123">
+        <div>
+          <span *ngIf="paymentForm.controls['cvv'].invalid && paymentForm.controls['cvv'].touched" class="text-danger">Enter a valid CVV(3 digits)</span>
+        </div>
+      </div>
+      <br>
+      <button class="btn btn-primary" (click)="checkout()" [disabled]="paymentForm.invalid">Submit</button>
+    </form>
+  </div>
+</div>
+<app-footer></app-footer>

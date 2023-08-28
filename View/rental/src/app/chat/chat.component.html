@@ -1,0 +1,25 @@
+<app-admin-header></app-admin-header>
+    <div class="main-container">
+        <div class="banner">
+            <div class="questions-container">
+                <div *ngFor="let ele of Questions" class="question-box">
+                    <div class="question-header">
+                        <h5>{{ ele.question }}</h5>
+                        <small class="asked-by">Asked By - {{ ele.cname }} {{ ele.cid }}</small>
+                    </div>
+                    <div class="answers">
+                        <div *ngFor="let ans of ele.answers" class="answer">{{ ans.answer }}</div>
+                    </div>
+                    <div class="reply">
+                        <div class="input-group">
+                            <input type="text" #answerInput class="form-control" placeholder="Your Reply">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary reply-button" (click)="addanswer(ele, answerInput.value)">Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+<app-footer></app-footer>

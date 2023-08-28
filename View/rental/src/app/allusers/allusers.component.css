@@ -1,0 +1,86 @@
+*body {
+    margin: 0;
+    padding: 0;
+  }
+
+.main-container table-container {
+    margin: 20px auto;
+    max-width: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table thead {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+.table td, .table th {
+    padding: 12px;
+    vertical-align: middle;
+    border-top: none;
+}
+
+.email {
+    color: #007bff;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border-color 0.3s ease-in-out;
+    background-color: #f9f9f9;
+    font-size: 16px;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #66afe9;
+}
+
+.phone {
+    width: 120px;
+}
+
+.address {
+    width: 100%;
+    max-width: 300px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.btn-update {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

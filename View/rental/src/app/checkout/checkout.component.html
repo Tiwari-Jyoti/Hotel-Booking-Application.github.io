@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="checkout.component.css">
+    <title>Check Out Page</title>
+</head>
+<body>
+<app-header></app-header>
+<div class="main-container">
+    <h1>CHECK OUT</h1>
+    <div class="banner">
+        <div class="row">
+            <div class="col-5">
+                <div id="carouselWithIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="0" class="active"></li>
+                        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="1"></li>
+                        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="2"></li>
+                        <li data-bs-target="#carouselWithIndicators" data-bs-slide-to="3"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{{area.image1}}" class="d-block w-100" style="height:300px ;" alt="Slide 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{area.image2}}" class="d-block w-100" style="height:300px ;" alt="Slide 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{area.image3}}" class="d-block w-100" style="height:300px ;" alt="Slide 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{{area.image4}}" class="d-block w-100" style="height:300px ;" alt="Slide 4">
+                        </div>
+    
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselWithIndicators" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselWithIndicators" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-6 checkout">
+                <h2>{{area.name}}</h2>
+                <h4>₹ {{area.price}} per Night</h4>
+    
+                <label for="checkin">Check-in date:</label>
+                <input type="date" id="checkin" name="checkin" [(ngModel)]="checkinDate" (ngModelChange)="updateTotalPrice()" min="{{getCurrentDate() | date:'yyyy-MM-dd'}}">
+                <label for="checkout">Check-out date:</label>
+                <input type="date" id="checkout" name="checkout" [(ngModel)]="checkoutDate" (ngModelChange)="updateTotalPrice()" [min]="checkinDate" [max]="getMaxCheckOutDate()">
+
+                <h6>Days: <input type="text" [value]="calculateDays()" readonly></h6>
+                <h4>Total Amount: ₹ {{ totalprice }}</h4>
+                <h5>Location : {{area.location}}</h5>
+                <h5>ViewPoint : {{area.viewpoint}}</h5>
+                <h5>Type : {{area.type}}</h5>
+                <p class="card-text">{{area.description}}
+                </p>
+                <h4 class="card-text"><small class="text-muted">Rating: {{area.rating}}</small></h4>
+                <br>
+                <button class="btn btn-primary" (click)="initiatePayment()" [disabled]="!checkinDate || !checkoutDate || calculateDays() <= 0 || area.reserved === 'true'" routerLink="/payment">Proceed to Payment</button>
+            </div> 
+        </div>
+        <h1 *ngIf="area.reserved == 'true' " style="text-align: center;">Sorry This is Place Is Reserved</h1>
+    </div>
+</div>    
+</body>
+</html>
+
+<app-footer></app-footer>

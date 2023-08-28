@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/home">HOTEL BOOKING</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/admindash" *ngIf="service.rolematch('ROLE_ADMIN')">Admin Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/home" *ngIf="service.rolematch('ROLE_USER')">User Dashboard</a>
+                </li>
+                <li class="nav-item" *ngIf="service.rolematch('ROLE_USER')">
+                    <a class="nav-link" routerLink="/userprofile">User Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/userchat" *ngIf="service.rolematch('ROLE_USER')">Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " routerLink="/contact">ContactUS</a>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li *ngIf="service.rolematch('ROLE_USER')">
+                    <div class="form-inline my-2 my-lg-0 ">
+                        <div class="sameline">
+
+                            <div class="search-container">
+                                <input #myinput class="form-control mr-sm-2 search-input" placeholder="Search a Place" aria-label="Search" (keyup.enter)="dosearch(myinput.value)">
+                                <button class="btn btn-outline-success my-2 my-sm-0 search-button" (click)="dosearch(myinput.value)"> Search</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </li> &nbsp;&nbsp;&nbsp;
+                <li class="nav-item dropdown" *ngIf="service.rolematch('ROLE_USER')">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Sort
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/category/sortplaceslow">Low-High</a>
+                        <a class="dropdown-item" routerLink="/category/sortplacestop">High-Low</a>
+                    </div>
+                </li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="nav-item dropdown" *ngIf="service.rolematch('ROLE_USER')">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Features
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" routerLink="/category/beach">Beachs</a>
+                        <a class="dropdown-item" routerLink="/category/hills">Hills</a>
+                    </div>
+                </li>
+
+            </ul>
+            <div class="user-actions">
+                <span class="badge badge-warning">Hello! </span>
+                <button *ngIf="!isLoggedin()" type="button" class="btn btn-outline-light login-btn" routerLink="/login">Login</button>
+                <button *ngIf="isLoggedin()" type="button" class="btn btn-outline-light logout-btn" (click)="logout()">Logout</button>                
+            </div>
+        </div>
+    </div>
+</nav>

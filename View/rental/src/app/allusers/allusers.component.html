@@ -1,0 +1,35 @@
+<app-admin-header></app-admin-header>
+    <div class="main-container">
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                     <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Address</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ele of users">
+                        <td>{{ele.username}}</td>
+                        <td class="email">{{ele.email}}</td>
+                        <td>
+                            <input class="input-field phone" type="text" placeholder="{{ele.phone}}" #number>
+                        </td>
+                        <td>
+                            <input class="input-field address" type="text" placeholder="{{ele.address}}" #address>
+                        </td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="btn btn-update" (click)="update(ele, number.value, address.value)">Update</button>
+                                <button class="btn btn-delete" (click)="deleteQ(ele)">Delete</button>
+                            </div>
+                        </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<app-footer></app-footer>

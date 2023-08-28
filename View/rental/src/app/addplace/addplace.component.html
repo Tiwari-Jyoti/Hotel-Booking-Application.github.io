@@ -1,0 +1,100 @@
+<app-admin-header></app-admin-header>
+<div class="banner">
+    <div class="main-container">
+        <div *ngIf="!success">
+            <div class="formbox">
+                <h1>Add a New Place</h1>
+                <form #formref="ngForm" (ngSubmit)="register()" class="log">
+
+                    <div class="form-group">
+                        <label for="name">Place Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter place name"
+                            [(ngModel)]="site.name" #place="ngModel" required [class.is-invalid]="place.invalid && place.touched">
+                        <small class="text-danger" [class.d-none]="place.valid || place.untouched">Place name is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" class="form-control" name="price" placeholder="Enter price"
+                            [(ngModel)]="site.price" #price="ngModel" required
+                            [class.is-invalid]="price.invalid && price.touched || !validatePrice(site.price)">
+                        <small class="text-danger" [class.d-none]="price.valid || price.untouched">Price is required</small>
+                        <small class="text-danger" [class.d-none]="validatePrice(site.price)">Enter a valid Price</small>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="location" placeholder="Enter location"
+                            [(ngModel)]="site.location" #location="ngModel" required [class.is-invalid]="location.invalid && location.touched">
+                        <small class="text-danger" [class.d-none]="location.valid || location.untouched">Location is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="viewpoint">View Point</label>
+                        <input type="text" class="form-control" name="viewpoint" placeholder="View Point"
+                                [(ngModel)]="site.viewpoint" #view="ngModel" required [class.is-invalid]="view.invalid && view.touched">
+                        <small class="text-danger" [class.d-none]="view.valid || view.untouched">ViewPoint is Required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Phone Number</label>
+                        <input type="text" class="form-control" name="contact" placeholder="Enter contact"
+                            [(ngModel)]="site.contact" #contact="ngModel" required>
+                        <small class="text-danger" [class.d-none]="contact.valid || contact.untouched">Phone Number is required</small>
+                        <ng-container *ngIf="!validateContact(site.contact)">
+                            <small class="text-danger">Phone Number must start with 6, 7, 8, or 9 and have 10 digits</small>
+                        </ng-container>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea name="" class="form-control" name="description" placeholder="description" cols="30" rows="3" [(ngModel)]="site.description" #desc="ngModel" required [class.is-invalid]="desc.invalid && desc.touched"></textarea>
+                        <small class="text-danger" [class.d-none]="desc.valid || desc.untouched">Description is Required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="rating">Rating</label>
+                        <input type="number" class="form-control" name="rating" placeholder="Enter rating"
+                            [(ngModel)]="site.rating" #rating="ngModel" required
+                            [class.is-invalid]="rating.invalid && rating.touched || !validateRating(site.rating)">
+                        <small class="text-danger" [class.d-none]="rating.valid || rating.untouched">Rating is required</small>
+                        <small class="text-danger" [class.d-none]="validateRating(site.rating)">Rating must be a valid number</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type">Type</label>
+                        <input type="text" class="form-control" name="type" placeholder="Type of Place" [(ngModel)]="site.type" #type="ngModel" required [class.is-invalid]="type.invalid && type.touched">
+                        <small class="text-danger" [class.d-none]="type.valid || type.untouched">Type of Place is Required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image1">Image 1</label>
+                        <input type="text" class="form-control" name="img1" placeholder="Enter image URL"
+                            [(ngModel)]="site.image1" #img1="ngModel" required [class.is-invalid]="img1.invalid && img1.touched">
+                        <small class="text-danger" [class.d-none]="img1.valid || img1.untouched">Image URL is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="image2">Image 2</label>
+                        <input type="text" class="form-control" name="img2" placeholder="Enter image URL"
+                                [(ngModel)]="site.image2" #img2="ngModel" required [class.is-invalid]="img2.invalid && img2.touched">
+                        <small class="text-danger" [class.d-none]="img2.valid || img2.untouched">Image URL is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="image3">Image 3</label>
+                        <input type="text" class="form-control" name="img3" placeholder="Enter image URL"
+                                [(ngModel)]="site.image3" #img3="ngModel" required [class.is-invalid]="img3.invalid && img3.touched">
+                        <small class="text-danger" [class.d-none]="img3.valid || img3.untouched">Image URL is required</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="image4">Image 4</label>
+                        <input type="text" class="form-control" name="img4" placeholder="Enter image URL"
+                                [(ngModel)]="site.image4" #img4="ngModel" required [class.is-invalid]="img4.invalid && img4.touched">
+                        <small class="text-danger" [class.d-none]="img4.valid || img4.untouched">Image URL is required</small>
+                    </div>
+                    <br>
+
+                    <button type="submit" class="btn btn-primary" [disabled]="formref.invalid">Add Place</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<app-footer></app-footer>

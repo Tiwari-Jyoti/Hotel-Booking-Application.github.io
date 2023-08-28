@@ -1,0 +1,62 @@
+body, h1, h2, p {
+  margin: 0;
+  padding: 0;
+}
+
+.main-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 100px;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: aquamarine;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: underline ;
+}
+
+.user-details {
+  background-color: aquamarine;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#display-details {
+  display: block;
+}
+
+#edit-details {
+  display: none;
+}
+
+.detail-row {
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+

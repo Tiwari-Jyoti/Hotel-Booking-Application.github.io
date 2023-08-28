@@ -1,0 +1,19 @@
+<app-header></app-header>
+    <div class="html">
+        <div class="box row">
+            <div class="queBox">
+            <input #ques type="text" placeholder="Ask your question" class="col">
+            <button class="col-2 btn btn-primary" (click)="addQ(ques.value)">Chat</button>
+            </div>
+        </div>
+        <div *ngFor="let ele of Questions" class="box">
+            <div class="each">
+                <h5>{{ele.question}} <small><a type="button" class="name">{{ele.cname}}</a></small></h5>
+                <br>
+                <div *ngFor="let ans of ele.answers">
+                    <p>{{ans.answer}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+<app-footer></app-footer>
