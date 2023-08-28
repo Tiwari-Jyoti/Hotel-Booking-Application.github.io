@@ -51,6 +51,8 @@ Count on our assistance through the contact us page, while also staying connecte
 Embark on Your Journey:
 Your dream vacation begins with our Hotel Booking Application. Dive into a world of seamless booking, outstanding features, and technological excellence. Your comfort and satisfaction are our top priorities. Book with us today and experience a new era of hotel booking!
 
-
+Admin Login Details: 
+	UserName: Admin123
+ 	Password: Skill1122@
 
 
